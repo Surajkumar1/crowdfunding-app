@@ -7,7 +7,7 @@ public class UserServiceTransformer {
 
     public static UserSignInRequest transform(com.example.demo.dto.client.request.UserSignInRequest request){
         return UserSignInRequest.builder()
-                .userName(request.getUserName())
+                .userName(request.getUsername())
                 .password(request.getPassword()).build();
     }
 

@@ -4,6 +4,7 @@ import DonationForm from "../components/DonationForm";
 import { useProjectContext, DonationResponse } from "../context/ProjectContext";
 import { useParams } from "react-router-dom";
 import "../ProjectDetails.css";
+import RedirectionButton from '../button/RedirectionButton'; 
 
 const Donation: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -12,9 +13,7 @@ const Donation: React.FC = () => {
   const [donation, setDonation] = useState<DonationResponse | null>(null);
   const [hasFetched, setHasFetched] = useState<boolean>(false);
 
-  console.log("yo");
   const fetchData = async () => {
-    // Function to perform the login
 
     if (hasFetched) return;
     setHasFetched(true);
@@ -36,7 +35,6 @@ const Donation: React.FC = () => {
   };
 
   fetchData();
-  console.log("yo2");
   if (donation == null) {
     return (
       <div>
@@ -44,16 +42,16 @@ const Donation: React.FC = () => {
       </div>
     );
   }
-  console.log("yo3");
   let data = donation.data;
-  console.log(data);
   return (
     <div className="donation-details">
       <h2>
         Thanks for donating {data.amount} towards the project -{" "}
         {data.campaign.title}
       </h2>
+      <RedirectionButton name="Home page" url="/" />
     </div>
+    
   );
 };
 

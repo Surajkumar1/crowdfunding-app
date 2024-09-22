@@ -9,12 +9,12 @@ const ProjectForm: React.FC = () => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [goalAmount, setGoalAmount] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Hi");
-    await addProject({
+    const response = await addProject({
       title,
       description,
       startDate,
@@ -23,9 +23,22 @@ const ProjectForm: React.FC = () => {
       id: 0,
       donations: 0,
       status: "ACTIVE",
+      effective: true,
+      message: ""
     });
-    navigate("/");
+    if(response.statusCode == "200") {
+      navigate("/");
+    } else {
+      setError(response.message)
+    }
+    
   };
+
+  const token = localStorage.getItem("authToken")
+  const authUserType = localStorage.getItem("authUserType")
+  if(token == null){
+    <div className="form-container">User should be registered and should have innovator access</div>
+  }
 
   return (
     <div className="form-container">

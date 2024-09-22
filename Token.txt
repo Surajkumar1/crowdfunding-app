@@ -1,0 +1,38 @@
+USER
+
+U1
+P1
+eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVMSIsInJvbGUiOlt7ImF1dGhvcml0eSI6IlJPTEVfVVNFUiJ9XSwiZXhwIjoxNzI3Mjc1NTMyLCJpYXQiOjE3MjcwMTYzMzJ9.bpFOr9kpBoLDYGuDI6d7Rievf0073AXOgpnL4cU2Wls
+
+INNOVATOR
+
+U2
+P2
+eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVMiIsInJvbGUiOlt7ImF1dGhvcml0eSI6IlJPTEVfSU5OT1ZBVE9SIn1dLCJleHAiOjE3MjcyNzU2MDMsImlhdCI6MTcyNzAxNjQwM30.Yq7u_j7qD-hXcQoU_sb2K3NHNroQXId2NkJIIxo9Z70
+
+
+Docker:
+
+sudo usermod -aG docker $USER
+
+sudo systemctl start docker
+sudo systemctl enable docker
+
+docker build -t crowd-fund-app .
+
+docker build -t your-dockerhub-username/your-app-name:latest .
+docker login
+docker push your-dockerhub-username/your-app-name:latest
+
+
+docker run -p 8080:8080 crowd-fund-app
+
+
+
+
+sudo apt-get update
+sudo apt-get install -y apt-transport-https ca-certificates curl
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+sudo apt-get update
+sudo apt-get install -y kubectl

@@ -1,6 +1,7 @@
 package com.example.demo.transformer.entity;
 
 
+import com.example.demo.constants.CampaignMessage;
 import com.example.demo.dto.client.response.GetCampaignResponse;
 import com.example.demo.dto.service.request.CreateCampaignRequest;
 import com.example.demo.dto.service.request.UpdateCampaignRequest;
@@ -53,6 +54,14 @@ public class CampaignEntityTransformer {
             }
         }
          */
+        String message = "";
+        if(campaign.getIsEffective()){
+            message = CampaignMessage.CAMPAIGN_LIVE;
+        } else if (campaign.getStartDate().toLocalDate().isAfter(LocalDate.now())){
+            message = CampaignMessage.CAMPAIGN_NOT_LIVE_YET;
+        } else {
+            message = CampaignMessage.CAMPAIGN_ENDED;
+        }
         return GetCampaignResponse.builder()
                 .id(campaign.getId())
                 .title(campaign.getTitle())
@@ -62,6 +71,8 @@ public class CampaignEntityTransformer {
                 .goalAmount(campaign.getGoalAmount())
                 .status(campaign.getStatus())
                 .userId(campaign.getUserId())
+                .isEffective(campaign.getIsEffective())
+                .message(message)
                 .donations(campaign.getDonationAmount().doubleValue()).build();
     }
 

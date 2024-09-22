@@ -18,5 +18,7 @@ public class GetCampaignResponse {
     private Date endDate;
     private CampaignStatus status;
     private Long userId;
-    private double donations;
+    private Double donations;
+    private Boolean isEffective;
+    private String message;
 }

@@ -36,7 +36,8 @@ public class PaymentService {
 
     public Payment createPayment(CreatePaymentRequest request) {
         Payment payment = PaymentEntityTransformer.transform(request);
-        payment.setUserId(UserContextUtility.fetchUserDetails().get().getUserId());
+        Long userId = UserContextUtility.fetchUserId();
+        payment.setUserId(userId);
         return paymentRepository.save(payment);
     }
 

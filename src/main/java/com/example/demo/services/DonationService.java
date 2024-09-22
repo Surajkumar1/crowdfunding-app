@@ -77,7 +77,8 @@ public class DonationService {
                 .orElseThrow(() -> new CustomException(CAMPAIGN_NOT_FOUND));
         validate(campaign);
         Donation donation = DonationEntityTransformer.transform(request);
-        donation.setUserId(UserContextUtility.fetchUserDetails().get().getUserId());
+        Long userId = UserContextUtility.fetchUserId();
+        donation.setUserId(userId);
         donation.setCampaign(campaign);
         donation = donationRepository.save(donation);
         PaymentApiResponse paymentResponse = makePaymentEntry(donation, headers);
@@ -98,7 +99,9 @@ public class DonationService {
         createPaymentRequest.setUserId(donation.getUserId());
         createPaymentRequest.setAmount(donation.getAmount());
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.set("authorization", headers.get("authorization"));
+        if(headers.containsKey("authorization")){
+            httpHeaders.set("authorization", headers.get("authorization"));
+        }
         HttpEntity<CreatePaymentRequest> httpEntity = new HttpEntity<CreatePaymentRequest>(createPaymentRequest, httpHeaders);
         return restTemplate.postForObject(createPaymentUrl, httpEntity, PaymentApiResponse.class);
     }
@@ -110,7 +113,6 @@ public class DonationService {
             throw new CustomException(USER_NOT_FOUND);
         }
         Donation donation = DonationEntityTransformer.transform(response.get(), request);
-        donation.getCampaign().setDonationAmount(donation.getCampaign().getDonationAmount().add(BigDecimal.valueOf(donation.getAmount())));
         donation = donationRepository.save(donation);
         Campaign campaign = campaignRepository.findByIdWithLock(donation.getCampaign().getId()).get();
         campaign.setDonationAmount(campaign.getDonationAmount().add(BigDecimal.valueOf(donation.getAmount())));

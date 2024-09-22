@@ -19,11 +19,15 @@ const LoginForm: React.FC = () => {
     }
 
     setError(null);
-    const response = await login(username, password);
-    if (response.statusCode == "200") {
-      navigate("/");
-    } else {
-      setError(response.message);
+    try {
+      const response = await login(username, password);
+      if (response.statusCode == "200") {
+        navigate("/");
+      } else {
+        setError(response.message)
+      }
+    } catch {
+      setError("Invalid credentials. Please enter valid username and password")
     }
   };
 

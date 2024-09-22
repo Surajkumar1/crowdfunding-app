@@ -12,6 +12,8 @@ import Donation from "./pages/Donation";
 import PaymentPage from "./pages/PaymentPage";
 import "./styles.css";
 import ProjectList from "./pages/ProjectList";
+import UserProjectList from "./pages/UserProjectList";
+import UserDonationList from "./pages/UserDonationList";
 
 const App: React.FC = () => {
   return (
@@ -21,10 +23,12 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/project/:id" element={<Project />} />
-            <Route path="/project/all" element={<ProjectList />} />
+            <Route path="/projects" element={<ProjectList />} />
+            <Route path="/project/my/projects" element={<UserProjectList />} />
             <Route path="/donation/:id" element={<Donation />} />
+            <Route path="/donation/my/donations" element={<UserDonationList />} />
             <Route path="/payment/:id" element={<PaymentPage />} />
-            <Route path="/create" element={<CreateProject />} />
+            <Route path="/campaign/create" element={<CreateProject />} />
             <Route path="/donate/:id" element={<DonationPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />

@@ -29,7 +29,7 @@ public class CampaignResource extends BaseController{
     }
 
     @GetMapping("/browse")
-    public ResponseEntity getCampaigns(@RequestParam("userId") Long userId,
+    public ResponseEntity getCampaigns(@RequestParam(value = "userId", required = false) Long userId,
                                           @RequestParam(name = "page_size", defaultValue =  "10") Integer pageSize,
                                           @RequestParam(name = "page_num", defaultValue = "0") Integer pageNum) {
         com.example.demo.dto.service.request.GetCampaignRequest serviceRequest

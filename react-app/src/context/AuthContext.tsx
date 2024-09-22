@@ -70,8 +70,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     password: string
   ): Promise<SignInResponse> => {
     const response = await loginUser(username, password);
-    let statusCode = response.data.statusCode;
-    if ((statusCode = "200")) {
+    if (response.data != null && response.data.statusCode == 200) {
       saveToken(response.data.data.token);
       setUser(username);
     }
@@ -89,12 +88,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     password: string,
     role: string
   ): Promise<SignUpResponse> => {
-    console.log("reached her 1 " + username + role);
     const response = await signupUser(username, emailId, password, role);
     let statusCode = response.data.statusCode;
-    if (statusCode == "200") {
-      setUser(username);
-    }
     return response.data;
   };
 

@@ -48,6 +48,12 @@ export interface ProjectResponse {
   data: Project;
 }
 
+
+export interface CreateProjectResponse {
+  statusCode: string;
+  message: string;
+}
+
 export interface Donation {
   id: number;
   campaign: Project;
@@ -64,11 +70,13 @@ export interface Project {
   goalAmount: string;
   status: string;
   donations: number;
+  isEffective: boolean;
+  message: string
 }
 
 interface ProjectContextType {
   projects: Project[];
-  addProject: (project: Project) => Promise<void>;
+  addProject: (project: Project) => Promise<CreateProjectResponse>;
   donate: (id: number, amount: number) => Promise<CreateDonationResponse>;
   fetchProject: (id: string) => Promise<ProjectResponse>;
   fetchProjectList: (data: {
@@ -95,8 +103,9 @@ export const ProjectProvider: React.FC<{ children: ReactNode }> = ({
   const [projects, setProjects] = useState<Project[]>([]);
   const { user } = useAuthContext();
 
-  const addProject = async (project: Project) => {
+  const addProject = async (project: Project): Promise<CreateProjectResponse> => {
     const response = await createProject(project);
+    return response.data;
   };
 
   const donate = async (
@@ -137,9 +146,6 @@ export const ProjectProvider: React.FC<{ children: ReactNode }> = ({
 
   const fetchDonation = async (id: string): Promise<DonationResponse> => {
     const response = await getDonation(id);
-    if (response.status != 200) {
-      return response.data;
-    }
     return response.data;
   };
 
@@ -148,9 +154,6 @@ export const ProjectProvider: React.FC<{ children: ReactNode }> = ({
     page_size: string;
   }): Promise<DonationListResponse> => {
     const response = await getUserDonations(data);
-    if (response.status != 200) {
-      return response.data;
-    }
     return response.data;
   };
 

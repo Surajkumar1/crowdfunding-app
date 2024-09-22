@@ -4,6 +4,7 @@ import DonationForm from "../components/DonationForm";
 import { useProjectContext, ProjectResponse } from "../context/ProjectContext";
 import { useParams } from "react-router-dom";
 import "../ProjectDetails.css";
+import RedirectionButton from '../button/RedirectionButton'; 
 
 const Project: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -41,12 +42,14 @@ const Project: React.FC = () => {
     return (
       <div>
         <h2>Invalid project id</h2>
+        <RedirectionButton name="Home page" url="/" />
       </div>
     );
   }
 
   let data = project.data;
   return (
+    <div>
     <div className="project-details">
       <h2>{data.title}</h2>
       <p>
@@ -66,13 +69,16 @@ const Project: React.FC = () => {
         {data.goalAmount}
       </p>
       <p>
-        <strong>Status:</strong>
-        {data.status}
+        <strong>status:</strong>
+        {data.message}
       </p>
-      <p>
+      {data.isEffective ? <p>
         <strong>Donations: </strong> {data.donations}
-      </p>
+      </p> : null}
       <DonationForm projectId={data.id} />
+      
+    </div>
+    <RedirectionButton name="Home page" url="/" />
     </div>
   );
 };

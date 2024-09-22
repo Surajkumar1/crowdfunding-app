@@ -28,7 +28,6 @@ const SignUpForm: React.FC = () => {
       password,
       role,
     };
-    console.log("role " + role);
     const response = await signup(username, emailId, password, role);
     if (response.statusCode == "200") {
       navigate("/");
@@ -81,8 +80,8 @@ const SignUpForm: React.FC = () => {
             <option value="" disabled>
               Select a role
             </option>
-            <option value="DONOR">DONOR</option>
-            <option value="CREATOR">CREATOR</option>
+            <option value="USER">USER</option>
+            <option value="INNOVATOR">INNOVATOR</option>
           </select>
         </div>
         {error && <p style={{ color: "red" }}>{error}</p>}

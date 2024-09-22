@@ -48,9 +48,9 @@ public class DonationResource extends BaseController{
     @GetMapping("/my/donations")
     public ResponseEntity getDonationByUserId(@RequestParam(name = "page_size", defaultValue =  "10") Integer pageSize,
                                               @RequestParam(name = "page_num", defaultValue = "0") Integer pageNum) {
-        Optional<CustomUserDetails> userDetails = UserContextUtility.fetchUserDetails();
+        Long userId = UserContextUtility.fetchUserId();
         com.example.demo.dto.service.request.GetDonationRequest serviceRequest
-                = DonationServiceTransformer.transform(userDetails.get().getUserId(), pageNum, pageSize);
+                = DonationServiceTransformer.transform(userId, pageNum, pageSize);
         List<Donation> response =  donationService.getDonationByUserId(serviceRequest);
         return successResponse(response, REQUEST_SUCCESS);
     }

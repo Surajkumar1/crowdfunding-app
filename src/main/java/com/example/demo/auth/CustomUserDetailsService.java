@@ -39,6 +39,14 @@ public class CustomUserDetailsService implements UserDetailsService {
         return new CustomUserDetails(user.get().getId(), user.get().getUsername(), user.get().getPassword(), getAuthorities(user.get()));
     }
 
+    public Optional<UserDetails> fetchUser(String username) throws UsernameNotFoundException {
+        Optional<com.example.demo.entities.user.User> user = userRepository.findByUsername(username);
+        if(user.isPresent()){
+            return Optional.of(new CustomUserDetails(user.get().getId(), user.get().getUsername(), user.get().getPassword(), getAuthorities(user.get())));
+        }
+        return Optional.empty();
+    }
+
 
     private Collection<? extends GrantedAuthority> getAuthorities(com.example.demo.entities.user.User user) {
         return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + user.getRole().getRole()));

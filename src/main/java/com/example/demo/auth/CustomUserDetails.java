@@ -12,7 +12,7 @@ import java.util.Collection;
 @AllArgsConstructor
 public class CustomUserDetails implements UserDetails {
 
-    private Long userId;  // Add user ID field
+    private Long userId;
     private String username;
     private String password;
     private Collection<? extends GrantedAuthority> authorities;

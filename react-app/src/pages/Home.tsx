@@ -3,6 +3,10 @@ import { useAuthContext } from "../context/AuthContext";
 import ProjectList from "./ProjectList";
 import "../homeStyles.css";
 import { useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import RedirectionButton from '../button/RedirectionButton'; 
+import UserProjectList from './UserProjectList';
+import UserDonationList from './UserDonationList';
 
 const Home: React.FC = () => {
   const { user, logout } = useAuthContext();
@@ -36,6 +40,10 @@ const Home: React.FC = () => {
           </div>
         )}
       </header>
+      <RedirectionButton name="Your Campaigns" url="/project/my/projects" />
+      <RedirectionButton name="Your Donations" url="/donation/my/donations" />
+      <RedirectionButton name="Our Campaigns" url="/projects" />
+      <RedirectionButton name="Create a campaign" url="/campaign/create" />
       <main>
         <ProjectList />
       </main>

@@ -10,6 +10,7 @@ public enum ErrorCode {
     USER_EXISTS("Username already exists. Please try other user names", HttpStatus.BAD_REQUEST),
     USER_NOT_FOUND("User not found", HttpStatus.BAD_REQUEST),
     INCORRECT_PASSWORD("Incorrect password. Please try again", HttpStatus.BAD_REQUEST),
+    INCORRECT_USER("Username is incorrect", HttpStatus.BAD_REQUEST),
     USER_LOGIN_FAILED("User login failed", HttpStatus.BAD_REQUEST),
 
     CAMPAIGN_NOT_FOUND("Campaign not found", HttpStatus.BAD_REQUEST),

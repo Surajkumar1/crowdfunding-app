@@ -14,7 +14,7 @@ const DonationForm: React.FC<DonationFormProps> = ({ projectId }) => {
   const handleDonate = async () => {
     if (amount > 0) {
       const response = await donate(projectId, amount);
-      setAmount(0);
+      //setAmount(0);
       navigate("/payment/" + response.data.paymentId + "?amount=" + amount);
     }
   };
