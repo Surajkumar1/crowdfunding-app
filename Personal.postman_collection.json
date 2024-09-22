@@ -1,0 +1,409 @@
+{
+	"info": {
+		"_postman_id": "aa859f21-a874-4cda-9cfe-fcb04abe85c1",
+		"name": "Personal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "29591681"
+	},
+	"item": [
+		{
+			"name": "ES",
+			"item": [
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "ApiKey MkNJbUZwSUJDMG1KOWc4UlQyUFo6NFZfUEozajdSSjJYVTV4eDVkQW1KUQ==",
+								"type": "text"
+							}
+						],
+						"url": "https://1d15a5ca26eb4845bcca05fa1cf8bb19.us-east-2.aws.elastic-cloud.com:443/_cluster/health"
+					},
+					"response": []
+				},
+				{
+					"name": "Health Copy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "ApiKey MkNJbUZwSUJDMG1KOWc4UlQyUFo6NFZfUEozajdSSjJYVTV4eDVkQW1KUQ==",
+								"type": "text"
+							}
+						],
+						"url": "https://1d15a5ca26eb4845bcca05fa1cf8bb19.us-east-2.aws.elastic-cloud.com:443/_cluster/health"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Health",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer e1yJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVMSIsInJvbGUiOlt7ImF1dGhvcml0eSI6IlJPTEVfVVNFUiJ9XSwiZXhwIjoxNzI3MTg3NjIwLCJpYXQiOjE3MjY5Mjg0MjB9.4-1mWUFhhcL19Zt9AZjkkV1lhljhEdP5iOuBeMohbJI",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": "http://{{host}}/health"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Campaign",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVMiIsInJvbGUiOlt7ImF1dGhvcml0eSI6IlJPTEVfSU5OT1ZBVE9SIn1dLCJleHAiOjE3MjcxODIzNTQsImlhdCI6MTcyNjkyMzE1NH0.XyOe3fo15B3rH_jN_UAwFLTcd6_rR9i60jItZIV-9WA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"C3\",\n    \"description\": \"CD3\",\n    \"goalAmount\": 1000.0,\n    \"startDate\": \"2024-09-16\",\n    \"endDate\": \"2024-09-30\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://{{host}}/api/v1/innovator/campaign/create"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Campaign",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVMiIsInJvbGUiOlt7ImF1dGhvcml0eSI6IlJPTEVfSU5OT1ZBVE9SIn1dLCJleHAiOjE3MjcxODIzNTQsImlhdCI6MTcyNjkyMzE1NH0.XyOe3fo15B3rH_jN_UAwFLTcd6_rR9i60jItZIV-9WA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Innovcation 1\",\n    \"description\": \"Description 1\",\n    \"goalAmount\": 1000.0,\n    \"startDate\": \"2024-09-16\",\n    \"endDate\": \"2024-09-30\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}/api/v1/campaign/my/projects?&page_num=0&page_size=10",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"campaign",
+						"my",
+						"projects"
+					],
+					"query": [
+						{
+							"key": null,
+							"value": null
+						},
+						{
+							"key": "page_num",
+							"value": "0"
+						},
+						{
+							"key": "page_size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Browse Campaign",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVMiIsInJvbGUiOlt7ImF1dGhvcml0eSI6IlJPTEVfSU5OT1ZBVE9SIn1dLCJleHAiOjE3MjcxODIzNTQsImlhdCI6MTcyNjkyMzE1NH0.XyOe3fo15B3rH_jN_UAwFLTcd6_rR9i60jItZIV-9WA",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Innovcation 1\",\n    \"description\": \"Description 1\",\n    \"goalAmount\": 1000.0,\n    \"startDate\": \"2024-09-16\",\n    \"endDate\": \"2024-09-30\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}/api/v1/campaign/browse?userId=2&page_num=0&page_size=10",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"campaign",
+						"browse"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "2"
+						},
+						{
+							"key": "page_num",
+							"value": "0"
+						},
+						{
+							"key": "page_size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Donation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVMiIsInJvbGUiOlt7ImF1dGhvcml0eSI6IlJPTEVfSU5OT1ZBVE9SIn1dLCJleHAiOjE3MjcxODIzNTQsImlhdCI6MTcyNjkyMzE1NH0.XyOe3fo15B3rH_jN_UAwFLTcd6_rR9i60jItZIV-9WA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": 40.0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://{{host}}/api/v1/donation/2/donate"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Payment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVMiIsInJvbGUiOlt7ImF1dGhvcml0eSI6IlJPTEVfSU5OT1ZBVE9SIn1dLCJleHAiOjE3MjcxODIzNTQsImlhdCI6MTcyNjkyMzE1NH0.XyOe3fo15B3rH_jN_UAwFLTcd6_rR9i60jItZIV-9WA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"donationId\": 21,\n    \"amount\": 10.0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://{{host}}/api/v1/payment/create"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Payment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"paymentId\": 23,\n    \"status\": \"Y\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://{{host}}/api/v1/payment/update"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Donation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"donationId\": 24,\n    \"status\": \"SUCCESS\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://{{host}}/api/v1/donation/update"
+			},
+			"response": []
+		},
+		{
+			"name": "My Donations",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVMiIsInJvbGUiOlt7ImF1dGhvcml0eSI6IlJPTEVfSU5OT1ZBVE9SIn1dLCJleHAiOjE3MjcxODIzNTQsImlhdCI6MTcyNjkyMzE1NH0.XyOe3fo15B3rH_jN_UAwFLTcd6_rR9i60jItZIV-9WA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"donationId\": 3,\n    \"status\": \"SUCCESS\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}/api/v1/donation/my/donations?page_size=3&page_num=0",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"donation",
+						"my",
+						"donations"
+					],
+					"query": [
+						{
+							"key": "page_size",
+							"value": "3"
+						},
+						{
+							"key": "page_num",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Campaign",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Innovcation 1\",\n    \"description\": \"Description 1\",\n    \"goalAmount\": 1200.0,\n    \"startDate\": \"2024-09-16\",\n    \"endDate\": \"2024-09-27\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://{{host}}/api/campaign/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Campaign",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVMiIsInJvbGUiOlt7ImF1dGhvcml0eSI6IlJPTEVfSU5OT1ZBVE9SIn1dLCJleHAiOjE3MjcxODIzNTQsImlhdCI6MTcyNjkyMzE1NH0.XyOe3fo15B3rH_jN_UAwFLTcd6_rR9i60jItZIV-9WA",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Innovcation 1\",\n    \"description\": \"Description 1\",\n    \"goalAmount\": 1200.0,\n    \"startDate\": \"2024-09-16\",\n    \"endDate\": \"2024-09-27\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://{{host}}/api/v1/campaign/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Sign Up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userName\": \"U3\",\n    \"emailId\": \"U3@gmail.com\",\n    \"password\": \"P3\",\n    \"role\": \"USER\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://{{host}}/api/v1/auth/signup"
+			},
+			"response": []
+		},
+		{
+			"name": "Sign In",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userName\": \"U1\",\n    \"password\": \"P1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://{{host}}/api/v1/auth/signin"
+			},
+			"response": []
+		}
+	]
+}
