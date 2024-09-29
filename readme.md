@@ -1,11 +1,3 @@
-DONOR:
-
-Username: U1
-Password: P1
-Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVMSIsInJvbGUiOlt7ImF1dGhvcml0eSI6IlJPTEVfVVNFUiJ9XSwiZXhwIjoxNzI3MTg3NjIwLCJpYXQiOjE3MjY5Mjg0MjB9.4-1mWUFhhcL19Zt9AZjkkV1lhljhEdP5iOuBeMohbJI
-
-INNOVATOR:
-
-Username: U2
-Password: P2
-Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVMiIsInJvbGUiOlt7ImF1dGhvcml0eSI6IlJPTEVfSU5OT1ZBVE9SIn1dLCJleHAiOjE3MjcxODIzNTQsImlhdCI6MTcyNjkyMzE1NH0.XyOe3fo15B3rH_jN_UAwFLTcd6_rR9i60jItZIV-9WA
+Crowd funding App
+Front End - React
+Back End - Springboot
